@@ -1,0 +1,39 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+//creamos las tablas para migrarlas
+model PaqueteDeVuelo {
+  id             Int     @id @default(autoincrement())
+  nombre_paquete String
+  descripcion    String
+  imagen         String?
+  duracion       Int
+  precio         Float
+  estado         Boolean
+  urlImagen      String?
+}
+
+model FormasPago {
+  id          Int     @id @default(autoincrement())
+  nombre      String
+  descripcion String
+  estado      Boolean
+  imagen      String?
+  urlImagen   String?
+  numero      Int
+  cci         String
+}
+model estado_pago {
+  id          Int      @id @default(autoincrement())
+  nombre      String
+  descripcion String
+}
